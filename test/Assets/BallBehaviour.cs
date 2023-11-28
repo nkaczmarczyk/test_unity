@@ -29,7 +29,7 @@ public class BallBehaviour : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && rb.velocity.y==0)
         {
-            rb.AddForce(Vector2.up * 250);
+            rb.AddForce(Vector2.up * 350);
         }
     }
 }
