@@ -3,7 +3,7 @@ using TMPro;
 
 public class LicznikOwocow : MonoBehaviour
 {
-    public TMP_Text tekstLicznika;
+    public TextMeshProUGUI tekstLicznika;
     private int iloscZebranychOwocow = 0;
 
     void Start()
@@ -11,7 +11,7 @@ public class LicznikOwocow : MonoBehaviour
         AktualizujLicznik();
     }
 
-    public void UstawTekstLicznika(TMP_Text tekstMesh)
+    public void UstawTekstLicznika(TextMeshProUGUI tekstMesh)
     {
         tekstLicznika = tekstMesh;
         AktualizujLicznik();
@@ -23,20 +23,18 @@ public class LicznikOwocow : MonoBehaviour
         {
             iloscZebranychOwocow++;
             AktualizujLicznik();
-            other.gameObject.SetActive(false); // Wy³¹cz owoc
         }
     }
 
     void AktualizujLicznik()
     {
-        if (tekstLicznika != null)
-        {
-            tekstLicznika.text = "Zebrane owoce: " + iloscZebranychOwocow.ToString();
-        }
-        else
+        if (tekstLicznika == null)
         {
             Debug.LogError("TextMeshPro nie zosta³ przypisany.");
+            return;
         }
+
+        tekstLicznika.text = $"Zebrane owoce: {iloscZebranychOwocow}";
     }
 }
 
